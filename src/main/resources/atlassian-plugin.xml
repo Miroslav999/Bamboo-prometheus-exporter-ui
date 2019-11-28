@@ -1,0 +1,25 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}"
+	plugins-version="2">
+	<plugin-info>
+		<description>${project.description}</description>
+		<version>${project.version}</version>
+		<vendor name="${project.organization.name}" url="${project.organization.url}" />
+		<param name="plugin-icon">images/pluginIcon.png</param>
+		<param name="plugin-logo">images/pluginLogo.png</param>
+	</plugin-info>
+
+	<servlet name="Remove Metrics Servlet" key="bamboo-remove-metrics"
+		class="atlas.plugin.promexporter.servlet.RemoveMetricsServlet">
+		<url-pattern>/metrics/table</url-pattern>
+	</servlet>
+
+	<resource type="download" name="bootstrap/" location="bootstrap/" />
+	
+	<web-item name="Table with time of passing tests" key="prom-bamboo-duration-tests"
+		section="system.admin/plugins" weight="100">
+		<label key="Table with time of passing tests" />
+		<description key="atlas.plugin.promexporter.settings.section.desc" />
+		<link linkId="prom-bamboo-duration-tests">/plugins/servlet/metrics/table</link>
+	</web-item>
+
+</atlassian-plugin>
